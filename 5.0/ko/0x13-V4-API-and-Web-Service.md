@@ -1,20 +1,20 @@
-# V4 API and Web Service
+# V4 API 와 WEB 서비스
 
-## Control Objective
+## 제어할 목표
 
-Several considerations apply specifically to applications that expose APIs for use by web browsers or other consumers (commonly using JSON, XML, or GraphQL). This chapter covers the relevant security configurations and mechanisms that should be applied.
+웹 브라우저나 다른 클리어언트에서 사용하기 위해서 API를 노출하는 애플리케이션 (일반적으로 JSON, XML, GraphQL 사용) 에는 몇 가지 특별히 고려해야 할 사항이 적용됩니다. 이 챕터에서는 관련 보안 설정과 적용해야할 매커니즘에 대해 다룹니다.
 
-Note that authentication, session management, and input validation concerns from other chapters also apply to APIs, so this chapter cannot be taken out of context or tested in isolation.
+다른 챕터에서 다루는 인증, 세션 관리, 입력값 검증과 관련된 문제들은 API에도 동일하게 적용되므로, 이 챕터의 내용을 전체 맥락에서 벗어나 개별적으로 테스트해서는 안 된다는 점에 유의해야 합니다.
 
-## V4.1 Generic Web Service Security
+## V4.1 일반적인 웹 서비스 보안
 
-This section addresses general web service security considerations and, consequently, basic web service hygiene practices.
+이 섹션은 일반적인 웹 서비스 보안 고려사항과 기본적인 웹 서비스 보안 수칙에 대해서 다룹니다.
 
-| # | Description | Level |
+| # | 설명 | 수준 |
 | :---: | :--- | :---: |
-| **4.1.1** | Verify that every HTTP response with a message body contains a Content-Type header field that matches the actual content of the response, including the charset parameter to specify safe character encoding (e.g., UTF-8, ISO-8859-1) according to IANA Media Types, such as "text/", "/+xml" and "/xml". | 1 |
-| **4.1.2** | Verify that only user-facing endpoints (intended for manual web-browser access) automatically redirect from HTTP to HTTPS, while other services or endpoints do not implement transparent redirects. This is to avoid a situation where a client is erroneously sending unencrypted HTTP requests, but since the requests are being automatically redirected to HTTPS, the leakage of sensitive data goes undiscovered. | 2 |
-| **4.1.3** | Verify that any HTTP header field used by the application and set by an intermediary layer, such as a load balancer, a web proxy, or a backend-for-frontend service, cannot be overridden by the end-user. Example headers might include X-Real-IP, X-Forwarded-*, or X-User-ID. | 2 |
+| **4.1.1** | 메세지 본문이 포함된 모든 HTTP 응답에는 실제 내용과 일치하는 Content-Type 헤더 필드가 포함되어 있는지 검증합니다. 이때 IANA 미디어 타입(text, /+xml, /xml 등)에 따라 안전한 문자 인코딩 (ex. UTF-8, ISO-8859-1)을 지정하는 charset 파라미터도 포함되어야 합니다. | 1 |
+| **4.1.2** | 사용자가 대면하는 엔드포인트(사람이 직접 웹 브라우저에 접속하는 경우)만 HTTP에서 HTTPS로 자동 리디렉션하고, 그 외에 서비스나 API 엔드포인트는 명백한 리디렉션을 구현하지 않았는지 검증합니다. 이는 클라이언트가 실수로 암호화되지 않은 HTTP 요청을 보내고 있음에도, 요청이 자동으로 HTTPS로 리디렉션되어 민감한 데이터의 유출 사실을 발견하지 못하게 되는 상황을 방지하기 위함입니다. | 2 |
+| **4.1.3** | 로드 밸런서, 웹 프록시,  | 2 |
 | **4.1.4** | Verify that only HTTP methods that are explicitly supported by the application or its API (including OPTIONS during preflight requests) can be used and that unused methods are blocked. | 3 |
 | **4.1.5** | Verify that per-message digital signatures are used to provide additional assurance on top of transport protections for requests or transactions which are highly sensitive or which traverse a number of systems. | 3 |
 
