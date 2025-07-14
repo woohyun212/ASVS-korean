@@ -1,7 +1,7 @@
 [어진] 아
 # Changes Compared to v4.x
 
-## Introduction
+## 소개
 
 Users familiar with version 4.x of the standard may find it helpful to review the key changes introduced in version 5.0, including updates in content, scope, and underlying philosophy.
 
