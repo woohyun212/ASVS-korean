@@ -1,12 +1,12 @@
-# V10 OAuth and OIDC
+# V10 OAuth와 OIDC
 
-## Control Objective
+## 통제 목표
 
-OAuth2 (referred to as OAuth in this chapter) is an industry-standard framework for delegated authorization. For example, using OAuth, a client application can obtain access to APIs (server resources) on a user's behalf, provided the user has authorized the client application to do so.
+OAuth2 (이 장에서는 OAuth로 통일한다) 는 일시적 권한 부여를 위한 산업 표준 프레임워크다. 예로, OAuth 사용 시, 사용자가 클라이언트 어플리케이션을 인증하면, 그 클라이언트 어플리케이션은 사용자 측에서 API (서버 리소스) 의 접근 권한을 얻게 된다.
 
-By itself, OAuth is not designed for user authentication. The OpenID Connect (OIDC) framework extends OAuth by adding a user identity layer on top of OAuth. OIDC provides support for features including standardized user information, Single Sign-On (SSO), and session management. As OIDC is an extension of OAuth, the OAuth requirements in this chapter also apply to OIDC.
+이 자체로, OAuth는 사용자 인증을 위해 고안된 것이 아니다. OpenID 연결 (OIDC) 프레임워크는 OAuth 상단에 유저 식별 계층을 추가하도록 OAuth를 확장시킨다. OIDC는 사용자 정보, Single Sign-On (SSO), 그리고 세션 관리를 포함한 기능의 제공을 지원한다. OIDC가 OAuth의 확장 프로그램이기 때문에, 이 장에서는 OAuth 요구사항으로 OIDC 또한 적용한다.
 
-The following roles are defined in OAuth:
+OAuth에서는 다음의 규칙들이 정의된다:
 
 * The OAuth client is the application that attempts to obtain access to server resources (e.g., by calling an API using the issued access token). The OAuth client is often a server-side application.
     * A confidential client is a client capable of maintaining the confidentiality of the credentials it uses to authenticate itself with the authorization server.
